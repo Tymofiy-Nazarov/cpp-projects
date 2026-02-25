@@ -1,41 +1,78 @@
-# Prerequisites
-*.d
+﻿# ============================================================
+# Visual Studio 2019/2022 + C/C++ .gitignore
+# ============================================================
 
-# Compiled Object files
-*.slo
-*.lo
+# --- Visual Studio служебные папки ---
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- IntelliSense / Browse Database ---
+ipch/
+*.VC.db
+*.VC.db-shm
+*.VC.db-wal
+*.VC.opendb
+*.VC.VC.opendb
+*.ipch
+
+# --- Build output ---
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# --- Build артефакты ---
+*.exe
+*.dll
+*.lib
+*.a
 *.o
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
 *.pdb
+*.ilk
+*.exp
+*.idb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.tlog
+*.lastbuildstate
+*.recipe
+*.FileListAbsolute.txt
+*.pch
+*.gch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# --- CMake (если вдруг используется) ---
+CMakeSettings.json
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
+out/
 
-# Fortran module files
-*.mod
-*.smod
+# --- Windows ---
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# debug information files
-*.dwo
+# --- Упакованные файлы ---
+*.zip
+*.rar
+*.7z
