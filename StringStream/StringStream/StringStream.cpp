@@ -2,6 +2,7 @@
 #include <string> //стандартные строки
 #include <iostream> //cout,cin
 #include <vector> //массив стандартной библиотеки
+#include <iomanip>
 
 using namespace std;
 
@@ -64,15 +65,24 @@ int main()
 	}
 	int day = 11, month = 3, year = 2026;
 	ostringstream oss;
-	oss << day <<"." << month <<"." << year; //дз при помощи манипуляторов сделать 11.03.2026;
+	oss << setw(2) << setfill('0') << day << "." << setw(2) << setfill('0') << month << "." << year;  //дз при помощи манипуляторов сделать 11.03.2026;
 	string date = oss.str();
 	cout << date<<endl;
 	//email
-	string email = "email@gmail.com";//дз 1)когда не ввели разделитель(@),когда несколько разделителей(one,,three,,four)
-	vector<string> parts=split(email, '@');
-	for (int i = 0; i < parts.size(); i++)
+	string email = "ema@il@gmail.com";//дз 1)когда не ввели разделитель(@),когда несколько разделителей(one,,three,,four)
+	vector<string> parts = split(email, '@');
+	if (parts.size() != 2)
 	{
-		cout << parts[i] << endl;
+		cout << "Incorrect email" << endl;
+	}
+	else if (parts[0].empty() || parts[1].empty())
+	{
+		cout << "Incorrect email" << endl;
+	}
+	else
+	{
+		cout << "First part:" << parts[0] << endl;
+		cout << "Second part:" << parts[1] << endl;
 	}
 
 }
