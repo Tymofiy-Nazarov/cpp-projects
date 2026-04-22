@@ -1,4 +1,6 @@
+#include <fstream>
 #include <iostream>
+#include <string>
 #include <iomanip>
 #include <cmath>
 
@@ -40,14 +42,49 @@ void DeleteMatrix(int** &matrix, int n)
 	}
 	delete[] matrix;
 }
+void MatrixToFile(const string& filename, int** &matrix, const int n, const int m)
+{
+	ofstream ofs(filename);
+	if (!ofs)
+	{
+		cout << "Can't open file with such name";
+		return;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m-1; j++)
+		{
+			ofs << matrix[i][j] << " ";
+		}
+		ofs << matrix[i][m-1] << endl;
+	}
+}
+void FileToMatrix(const string& filename, int**& matrix, const int n, const int m)
+{
+	ifstream ifs(filename);
+	if (!ifs)
+	{
+		cout << "Can't open file with such name";
+		return;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m - 1; j++)
+		{
+			ifs >> matrix[i][j];
+		}
+		ifs >> matrix[i][m - 1];
+	}
+}
 int main()
 {
 	const int n = 3;
 	const int m = 3;
 	int** matrix=0;
 	CreateMatrix(n, m, matrix);
+	FileToMatrix("output.txt", matrix, n, m);
 	//int** matrix = CreateMatrix(n, m);
-	matrix[0][0] = 11;
+	/*matrix[0][0] = 11;
 	matrix[0][1] = 12;
 	matrix[0][2] = 13;
 	matrix[1][0] = 21;
@@ -55,8 +92,9 @@ int main()
 	matrix[1][2] = 23;
 	matrix[2][0] = 31;
 	matrix[2][1] = 32;
-	matrix[2][2] = 33;
+	matrix[2][2] = 33;*/
 	PrintMatrix(matrix, n, m);
+	MatrixToFile("output.txt", matrix, n, m);
 	DeleteMatrix(matrix, n);
 	
 }
